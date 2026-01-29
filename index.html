@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Support Chat</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Optional: basic styling for the page -->
+  <style>
+    body { font-family: Arial, Helvetica, sans-serif; margin: 0; padding: 2rem; background: #f7f8fa; }
+    .wrap { max-width: 720px; margin: 0 auto; background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 1.5rem; }
+    h1 { margin-top: 0; font-size: 1.25rem; }
+    .note { color: #4b5563; font-size: 0.95rem; }
+  </style>
+
+  <!-- Optional: baseline CSP to avoid blocking your own scripts/styles in testing.
+       For production, prefer server headers over <meta> CSP and tighten sources. -->
+  <!--
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self';
+                 script-src 'self' https://mecwacare--mecwaccdev.sandbox.my.site.com https://mecwacare--mecwaccdev.sandbox.my.salesforce-scrt.com 'unsafe-inline';
+                 connect-src 'self' https://mecwacare--mecwaccdev.sandbox.my.salesforce-scrt.com https://mecwacare--mecwaccdev.sandbox.my.site.com https://*.salesforce.com https://*.force.com;
+                 style-src 'self' 'unsafe-inline';
+                 img-src 'self' data:;
+                 frame-ancestors 'self';
+                 frame-src https://mecwacare--mecwaccdev.sandbox.my.site.com https://*.salesforce.com https://*.force.com;">
+  -->
+</head>
+<body>
+  <div class="wrap">
+    <h1>Support</h1>
+    <p class="note">
+      If the chat launcher doesn’t appear, open the browser console (F12) for errors—most issues are due to CSP,
+      blocked origins, or mixed content (must be HTTPS).
+    </p>
+  </div>
+
+  <!-- Embedded Messaging bootstrap and init -->
+  <script type="text/javascript">
+    function initEmbeddedMessaging() {
+      try {
+        // Set the visitor language (e.g., 'en', 'en-US', 'en_US')
+        embeddedservice_bootstrap.settings.language = 'en_US';
+
+        embeddedservice_bootstrap.init(
+          '00D9p000009WD4z', // Salesforce Org Id
+          'site',            // Messaging Deployment Name
+          'https://mecwacare--mecwaccdev.sandbox.my.site.com/ESWsite1769139627287', // Site/Deployment URL
+          {
+            // Required SCRT URL for Messaging
+            scrt2URL: 'https://mecwacare--mecwaccdev.sandbox.my.salesforce-scrt.com'
+          }
+        );
+      } catch (err) {
+        console.error('Error loading Embedded Messaging: ', err);
+      }
+    }
+  </script>
+
+  <!-- Load the bootstrap from your Salesforce Experience site; init after load -->
+  <script
+   wacare--mecwaccdev.sandbox.my.site.com/ESWsite1769139627287/assets/js/bootstrap.min.js
+  </script>
+</body>
+</html>
